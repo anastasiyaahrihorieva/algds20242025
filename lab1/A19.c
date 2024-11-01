@@ -66,22 +66,22 @@ void AddToList(list_t* list, char data[]) {
 	newNode->next = list->head;
 	newNode->prev = NULL;
 	if (list->head != NULL) {
-		list->head->prev = newNode; // Устанавливаем обратную ссылку у старой головы
+		list->head->prev = newNode; // Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г®ГЎГ°Г ГІГ­ГіГѕ Г±Г±Г»Г«ГЄГі Гі Г±ГІГ Г°Г®Г© ГЈГ®Г«Г®ГўГ»
 	}
 	list->head = newNode;
 	if (list->tail == NULL) {
-		list->tail = newNode; // Если список был пуст, устанавливаем tail
+		list->tail = newNode; // Г…Г±Г«ГЁ Г±ГЇГЁГ±Г®ГЄ ГЎГ»Г« ГЇГіГ±ГІ, ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ tail
 	}
 }
 
 list_t* SortList(list_t* list) {
 	if (list == NULL || list->head == NULL) {
-		return list; // Если список пуст, ничего не делаем
+		return list; // Г…Г±Г«ГЁ Г±ГЇГЁГ±Г®ГЄ ГЇГіГ±ГІ, Г­ГЁГ·ГҐГЈГ® Г­ГҐ Г¤ГҐГ«Г ГҐГ¬
 	}
 
 	list_t* newlist = (list_t*)malloc(sizeof(list_t));
 	if (newlist == NULL) {
-		return NULL; // Проверка на успешное выделение памяти
+		return NULL; // ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГіГ±ГЇГҐГёГ­Г®ГҐ ГўГ»Г¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ
 	}
 	newlist->head = NULL;
 	newlist->tail = NULL;
@@ -90,7 +90,7 @@ list_t* SortList(list_t* list) {
 		node_t* current = list->head;
 		node_t* maxNode = current;
 
-		// Поиск максимального элемента в списке
+		// ГЏГ®ГЁГ±ГЄ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ  Гў Г±ГЇГЁГ±ГЄГҐ
 		while (current != NULL) {
 			if (strcmp(current->data, maxNode->data) > 0) {
 				maxNode = current;
@@ -98,22 +98,22 @@ list_t* SortList(list_t* list) {
 			current = current->next;
 		}
 
-		// Удаление максимального элемента из старого списка
+		// Г“Г¤Г Г«ГҐГ­ГЁГҐ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ  ГЁГ§ Г±ГІГ Г°Г®ГЈГ® Г±ГЇГЁГ±ГЄГ 
 		if (maxNode->prev) {
 			maxNode->prev->next = maxNode->next;
 		}
 		else {
-			list->head = maxNode->next; // если maxNode - голова списка
+			list->head = maxNode->next; // ГҐГ±Г«ГЁ maxNode - ГЈГ®Г«Г®ГўГ  Г±ГЇГЁГ±ГЄГ 
 		}
 
 		if (maxNode->next) {
 			maxNode->next->prev = maxNode->prev;
 		}
 		else {
-			list->tail = maxNode->prev; // если maxNode - хвост списка
+			list->tail = maxNode->prev; // ГҐГ±Г«ГЁ maxNode - ГµГўГ®Г±ГІ Г±ГЇГЁГ±ГЄГ 
 		}
 
-		// Добавление максимального элемента в новый список
+		// Г„Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ  Гў Г­Г®ГўГ»Г© Г±ГЇГЁГ±Г®ГЄ
 		maxNode->next = newlist->head;
 		maxNode->prev = NULL;
 
@@ -123,23 +123,25 @@ list_t* SortList(list_t* list) {
 		newlist->head = maxNode;
 
 		if (newlist->tail == NULL) {
-			newlist->tail = maxNode; // Обновляем хвост нового списка
+			newlist->tail = maxNode; // ГЋГЎГ­Г®ГўГ«ГїГҐГ¬ ГµГўГ®Г±ГІ Г­Г®ГўГ®ГЈГ® Г±ГЇГЁГ±ГЄГ 
 		}
 	}
 
-	return newlist; // Возвращаем отсортированный список
+	return newlist; // Г‚Г®Г§ГўГ°Г Г№Г ГҐГ¬ Г®ГІГ±Г®Г°ГІГЁГ°Г®ГўГ Г­Г­Г»Г© Г±ГЇГЁГ±Г®ГЄ
 }
 
 int main(void) {
 	list_t* list = CreateList();
-	AddToList(list, "cck flk");
-	AddToList(list, "-4u4");
-	AddToList(list, "42kf ngp0");
-	AddToList(list, "42kf deffn gp0");
+	AddToList(list, "cckvbskdjvsdj flk");
+	AddToList(list, "-DOFH4");
+	AddToList(list, "2f ngpDNSJDCNjjhdvb0");
+	AddToList(list, "4kf deffn gp0");
 	AddToList(list, "&3298 328u31/fwef12./,");
 	AddToList(list, "u *%");
-	AddToList(list, "-_-");
-
+	AddToList(list, "--");
+	AddToList(list, "&3298 328u31/fwef12./,");
+	AddToList(list, "u6789 9 *%");
+	AddToList(list, "-9999 bf n-");
 
 	PrintList(list);
 	list = SortList(list);
